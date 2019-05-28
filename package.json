@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node src/index.ts",
-    "clean": "rimraf ./dist"
+    "public": "ncp ./src/public/ ./dist/public/",
+    "hbscopy": "ncp ./src/views/ ./dist/views/",
+    "build": "npm run clean && tsc && npm run hbscopy && npm run public",
+    "clean": "rimraf ./dist",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +28,7 @@
     "express-handlebars": "^3.1.0",
     "mongoose": "^5.5.11",
     "morgan": "^1.9.1",
+    "ncp": "^2.0.0",
     "rimraf": "^2.6.3"
   }
 }
